@@ -22,7 +22,7 @@ Instead of two arguments, this function will also accept a single vector of leng
 }
 \examples{
 betterComp(5, 5)
-betterComp(5, NA)
+betterComp(9, NA)
 betterComp(5, 6)
 betterComp(NA, 7)
 betterComp(NA, NA)
