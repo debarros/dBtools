@@ -12,13 +12,10 @@ schoolYear(x = "year", y = Sys.Date())
 \item{y}{date, defaults to the current system date}
 }
 \value{
-TRUE if the two values are equal or if both are NA, and FALSE if they are not equal or if exactly one is NA
+integer - the year or term id
 }
 \description{
 Determine the current school year
-}
-\note{
-Instead of two arguments, this function will also accept a single vector of length 2 and compare the the two elements.
 }
 \examples{
 schoolYear()

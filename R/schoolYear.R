@@ -2,8 +2,7 @@
 #' @description Determine the current school year
 #' @param x type of information to be returned, defaults to "year"
 #' @param y date, defaults to the current system date
-#' @return TRUE if the two values are equal or if both are NA, and FALSE if they are not equal or if exactly one is NA
-#' @note Instead of two arguments, this function will also accept a single vector of length 2 and compare the the two elements.
+#' @return integer - the year or term id
 #' @examples
 #' schoolYear()
 #' schoolYear("TermID")
@@ -14,6 +13,6 @@ schoolYear = function(x = "year", y = Sys.Date()){
   year = as.integer(format(y, "%Y"))
   schoolyearend = as.Date(paste0(year,"-06-30"))
   if(y <= schoolyearend) year = year - 1 # adjust for the Spring
-  if(x == "year") return(x)
+  if(x == "year") return(year)
   if(x %in% c("termid", "term id")) return(100 * (year - 1990))
 }
