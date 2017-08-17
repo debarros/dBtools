@@ -9,7 +9,7 @@ VbetterComp(x, y)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{y}{A numeric vector of the same length as \code{x}}
+\item{y}{A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)}
 }
 \value{
 A logical vector where each position indicates whether the values in those positions of the input vectors are equal.  NAs are considered equal.
@@ -28,4 +28,6 @@ VbetterComp(ex1, ex4)
 VbetterComp(ex2, ex3)
 VbetterComp(ex2, ex4)
 VbetterComp(ex3, ex4)
+VbetterComp(ex3, NA)
+VbetterComp(ex3, 10)
 }
