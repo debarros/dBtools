@@ -1,7 +1,7 @@
 #' @title Vector Better Max
 #' @description Find the element by element max of two vectors
 #' @param x A numeric vector
-#' @param y A numeric vector of the same length as \code{x}
+#' @param y A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)
 #' @return A numeric vector where each position is the largest value stored in those positions of the input vectors.  If both input vectors have NA for a particular position, that position in the output will also contain NA.
 #' @examples
 #' ex1 = 6:10
@@ -14,6 +14,9 @@
 #' VbetterMax(ex2, ex3)
 #' VbetterMax(ex2, ex4)
 #' VbetterMax(ex3, ex4)
+#' VbetterMax(ex1, 7)
+#' VbetterMax(ex3, 5)
+#' VbetterMax(ex3, NA)
 VbetterMax = function(x,y){
   if(length(x) != length(y)){
     stop("Vectors must be of equal length")

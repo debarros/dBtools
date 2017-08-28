@@ -9,7 +9,7 @@ VbetterMax(x, y)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{y}{A numeric vector of the same length as \code{x}}
+\item{y}{A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)}
 }
 \value{
 A numeric vector where each position is the largest value stored in those positions of the input vectors.  If both input vectors have NA for a particular position, that position in the output will also contain NA.
@@ -28,4 +28,7 @@ VbetterMax(ex1, ex4)
 VbetterMax(ex2, ex3)
 VbetterMax(ex2, ex4)
 VbetterMax(ex3, ex4)
+VbetterMax(ex1, 7)
+VbetterMax(ex3, 5)
+VbetterMax(ex3, NA)
 }
