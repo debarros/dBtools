@@ -19,7 +19,11 @@
 #' VbetterMax(ex3, NA)
 VbetterMax = function(x,y){
   if(length(x) != length(y)){
-    stop("Vectors must be of equal length")
-  }
+    if(length(y) == 1){
+      y = rep(y, times = length(x))
+    } else {
+      stop("Vectors must be of equal length")
+    } # /if-else
+  } # /if
   apply(X = cbind(x,y), MARGIN = 1, FUN = betterMax)
 }
