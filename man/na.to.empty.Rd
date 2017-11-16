@@ -10,7 +10,7 @@ na.to.empty(x)
 \item{x}{A character vector}
 }
 \value{
-A numeric vector where each position is the largest value stored in those positions of the input vectors.  If both input vectors have NA for a particular position, that position in the output will also contain NA.
+A character vector contain all of non NA elements of \code{x}
 }
 \description{
 Converts all NA's in a character vector to empty values
