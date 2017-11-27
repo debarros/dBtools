@@ -2,21 +2,23 @@
 % Please edit documentation in R/betterMax.R
 \name{betterMax}
 \alias{betterMax}
-\title{Find the maximum value of a set that may contain NA's.}
+\title{Find the maximum value of a object that may contain NA's.}
 \usage{
 betterMax(x)
 }
 \arguments{
-\item{x}{A numerical vector}
+\item{x}{An object such as a numeric vector, matrix, or data.frame}
 }
 \value{
 The largest value in \code{x}, if any.  Otherwise, NA.
 }
 \description{
-Find the maximum value of a set that may contain NA's.
+Find the maximum value of a object that may contain NA's.
 }
 \examples{
 betterMax(1:5)
 betterMax(c(2,3,NA,7))
 betterMax(c(NA, NA, NA))
+ex1 = data.frame(X1 = LETTERS, X2 = 1:26, X3 = sample(c(20,NA), 26, T))
+betterMax(ex1)
 }
