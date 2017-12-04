@@ -8,6 +8,7 @@ Description: Install this package to make available a number of useful functions
 License: GPL-3
 Imports:
     abind,
-    openxlsx
+    openxlsx,
+    data.table
 LazyData: true
 RoxygenNote: 6.0.1
