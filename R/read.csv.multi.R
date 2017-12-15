@@ -11,6 +11,7 @@
 #' @param dupVar character of length 1 with the name of a variable for which duplicates should be dropped
 #' @param orderBy character of length 1 with the name of a variable by which to sort the result
 #' @param decreasing logical, should ordering be done by decreasing values?
+#' @param idcol Generates an index column. Default (NULL) is not to. If idcol=TRUE then the column is auto named .id. Alternatively the column name can be directly provided, e.g., idcol = "id". If input is a named list, ids are generated using them, else using integer vector from 1 to length of input list.
 #' @param messageLevel integer, the level of messages that should be printed to the console
 #' @return data.table
 read.csv.multi = function(folder,
@@ -24,6 +25,7 @@ read.csv.multi = function(folder,
                           dupVar = NULL,
                           orderBy = NULL,
                           decreasing = T,
+                          idcol = NULL,
                           messageLevel = 0){
 
   if(messageLevel > 0){ print("running read.csv.multi") }
@@ -34,11 +36,11 @@ read.csv.multi = function(folder,
   } else {
     filenames = grep(pattern = pattern, x = list.files(folder, full.names = T), ignore.case = T, value = T)
   }
-  filenames = grep(pattern = "csv", x = filenames, ignore.case = T, value = T)
+  filenames = grep(pattern = "csv", x = filenames, ignore.case = T, value = T, fixed = T)
 
   # Check to see if there are any files
   if(length(filenames) == 0){
-    stop("No files in the folder have names that match the pattern.")
+    stop("Either there are no csv files in the folder, or there are no csv files in the folder have names that match the pattern.")
   }
 
   # Set up a list to hold the data.frames
@@ -52,7 +54,7 @@ read.csv.multi = function(folder,
   }
 
   # Bind them csv's into a single data.table
-  ret = data.table::rbindlist(l = ret)
+  ret = data.table::rbindlist(l = ret, idcol = NULL)
 
   # Reorder
   if(!is.null(orderBy)){

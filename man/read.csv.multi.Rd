@@ -6,7 +6,8 @@
 \usage{
 read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
   dec = ".", fill = TRUE, comment.char = "", pattern = NULL,
-  dupVar = NULL, orderBy = NULL, decreasing = T, messageLevel = 0)
+  dupVar = NULL, orderBy = NULL, decreasing = T, idcol = NULL,
+  messageLevel = 0)
 }
 \arguments{
 \item{folder}{character of length 1 with the address of a folder}
@@ -30,6 +31,8 @@ read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
 \item{orderBy}{character of length 1 with the name of a variable by which to sort the result}
 
 \item{decreasing}{logical, should ordering be done by decreasing values?}
+
+\item{idcol}{Generates an index column. Default (NULL) is not to. If idcol=TRUE then the column is auto named .id. Alternatively the column name can be directly provided, e.g., idcol = "id". If input is a named list, ids are generated using them, else using integer vector from 1 to length of input list.}
 
 \item{messageLevel}{integer, the level of messages that should be printed to the console}
 }
