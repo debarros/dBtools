@@ -6,6 +6,7 @@
 #' @param quote	the set of quoting characters. To disable quoting altogether, use quote = "". Quoting is only considered for columns read as character, which is all of them unless colClasses is specified.
 #' @param dec	the character used in the file for decimal points.
 #' @param fill	logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added. See ‘Details’.
+#' @param trim  logical.  Should excess columns be trimmed (TRUE) or should missing columns be filled with NA's (FALSE)
 #' @param comment.char	a character vector of length one containing a single character or an empty string. Use "" to turn off the interpretation of comments altogether.
 #' @param stringsAsFactors Should strings be converted to factors?  Default is FALSE.  This should almost never be set to TRUE.
 #' @param pattern	character string containing a regular expression to be matched to file names.  Coerced by as.character to a character string if possible. If a character vector of length 2 or more is supplied, the first element is used with a warning.
@@ -21,6 +22,7 @@ read.csv.multi = function(folder,
                           quote = "\"",
                           dec = ".",
                           fill = TRUE,
+                          trim = TRUE,
                           comment.char = "",
                           stringsAsFactors = F,
                           pattern = NULL,
@@ -33,12 +35,13 @@ read.csv.multi = function(folder,
   if(messageLevel > 0){ print("running read.csv.multi") }
 
   # Get all the filenames
+  if(messageLevel > 1){ print("getting file names") }
   if(is.null(pattern)){
     filenames = list.files(folder, full.names = T)
   } else {
     filenames = grep(pattern = pattern, x = list.files(folder, full.names = T), ignore.case = T, value = T)
   }
-  filenames = grep(pattern = "csv", x = filenames, ignore.case = T, value = T, fixed = T)
+  filenames = grep(pattern = "csv", x = filenames, ignore.case = T, value = T)
 
   # Check to see if there are any files
   if(length(filenames) == 0){
@@ -49,6 +52,7 @@ read.csv.multi = function(folder,
   ret = vector(mode = "list", length = length(filenames))
 
   # Read the csv's into data.frames and put them in the list
+  if(messageLevel > 1){ print("reading files") }
   for(i in 1:length(filenames)){
     if(messageLevel > 1){ print(i) }
     ret[[i]] = read.csv(file = filenames[i], header = header, sep = sep, quote = quote, dec = dec,
@@ -56,16 +60,18 @@ read.csv.multi = function(folder,
   }
 
   # Bind them csv's into a single data.table
-  ret = data.table::rbindlist(l = ret, idcol = NULL)
+  ret = data.table::rbindlist(l = ret, idcol = idcol, fill = trim)
 
   # Reorder
   if(!is.null(orderBy)){
+    if(messageLevel > 1){ print("ordering the results") }
     ret = ret[order(ret[,orderBy], decreasing = decreasing),]
     rownames(ret) = NULL
   }
 
   # Remove duplicates
   if(!is.null(dupVar)){
+    if(messageLevel > 1){ print("removing duplicates") }
     ret = ret[!duplicated(ret[,dupVar]),]
     rownames(ret) = NULL
   }

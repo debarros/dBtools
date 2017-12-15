@@ -5,9 +5,9 @@
 \title{Read Multiple CSV's}
 \usage{
 read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
-  dec = ".", fill = TRUE, comment.char = "", stringsAsFactors = F,
-  pattern = NULL, dupVar = NULL, orderBy = NULL, decreasing = T,
-  idcol = NULL, messageLevel = 0)
+  dec = ".", fill = TRUE, trim = TRUE, comment.char = "",
+  stringsAsFactors = F, pattern = NULL, dupVar = NULL, orderBy = NULL,
+  decreasing = T, idcol = NULL, messageLevel = 0)
 }
 \arguments{
 \item{folder}{character of length 1 with the address of a folder}
@@ -21,6 +21,8 @@ read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
 \item{dec}{the character used in the file for decimal points.}
 
 \item{fill}{logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added. See ‘Details’.}
+
+\item{trim}{logical.  Should excess columns be trimmed (TRUE) or should missing columns be filled with NA's (FALSE)}
 
 \item{comment.char}{a character vector of length one containing a single character or an empty string. Use "" to turn off the interpretation of comments altogether.}
 
