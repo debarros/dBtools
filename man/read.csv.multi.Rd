@@ -5,9 +5,9 @@
 \title{Read Multiple CSV's}
 \usage{
 read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
-  dec = ".", fill = TRUE, comment.char = "", pattern = NULL,
-  dupVar = NULL, orderBy = NULL, decreasing = T, idcol = NULL,
-  messageLevel = 0)
+  dec = ".", fill = TRUE, comment.char = "", stringsAsFactors = F,
+  pattern = NULL, dupVar = NULL, orderBy = NULL, decreasing = T,
+  idcol = NULL, messageLevel = 0)
 }
 \arguments{
 \item{folder}{character of length 1 with the address of a folder}
@@ -23,6 +23,8 @@ read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
 \item{fill}{logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added. See ‘Details’.}
 
 \item{comment.char}{a character vector of length one containing a single character or an empty string. Use "" to turn off the interpretation of comments altogether.}
+
+\item{stringsAsFactors}{Should strings be converted to factors?  Default is FALSE.  This should almost never be set to TRUE.}
 
 \item{pattern}{character string containing a regular expression to be matched to file names.  Coerced by as.character to a character string if possible. If a character vector of length 2 or more is supplied, the first element is used with a warning.}
 

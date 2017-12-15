@@ -7,6 +7,7 @@
 #' @param dec	the character used in the file for decimal points.
 #' @param fill	logical. If TRUE then in case the rows have unequal length, blank fields are implicitly added. See ‘Details’.
 #' @param comment.char	a character vector of length one containing a single character or an empty string. Use "" to turn off the interpretation of comments altogether.
+#' @param stringsAsFactors Should strings be converted to factors?  Default is FALSE.  This should almost never be set to TRUE.
 #' @param pattern	character string containing a regular expression to be matched to file names.  Coerced by as.character to a character string if possible. If a character vector of length 2 or more is supplied, the first element is used with a warning.
 #' @param dupVar character of length 1 with the name of a variable for which duplicates should be dropped
 #' @param orderBy character of length 1 with the name of a variable by which to sort the result
@@ -21,6 +22,7 @@ read.csv.multi = function(folder,
                           dec = ".",
                           fill = TRUE,
                           comment.char = "",
+                          stringsAsFactors = F,
                           pattern = NULL,
                           dupVar = NULL,
                           orderBy = NULL,
@@ -49,8 +51,8 @@ read.csv.multi = function(folder,
   # Read the csv's into data.frames and put them in the list
   for(i in 1:length(filenames)){
     if(messageLevel > 1){ print(i) }
-    ret[[i]] = read.csv(file = filenames[i], header = header, sep = sep, quote = quote,
-                        dec = dec, fill = fill, comment.char = comment.char)
+    ret[[i]] = read.csv(file = filenames[i], header = header, sep = sep, quote = quote, dec = dec,
+                        fill = fill, comment.char = comment.char, stringsAsFactors = stringsAsFactors)
   }
 
   # Bind them csv's into a single data.table
