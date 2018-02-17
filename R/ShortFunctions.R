@@ -99,3 +99,10 @@ SortLength = function(x, decreasing = TRUE, na.last = NA){
 
 
 
+#' @title Suppress Warnings and Messages
+#' @description Suppress warnings and messages when evaluating an expression
+#' @param expr expression to evaluate
+SWSM = function(expr){
+  suppressMessages(suppressWarnings(expr))
+}
+

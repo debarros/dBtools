@@ -1,5 +1,5 @@
 #' @title Vector Better Comparison
-#' @description Compare two vectors element by element
+#' @description Compare two vectors for equality element by element
 #' @param x A numeric vector
 #' @param y A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)
 #' @return A logical vector where each position indicates whether the values in those positions of the input vectors are equal.  NAs are considered equal.

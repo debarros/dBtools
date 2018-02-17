@@ -15,7 +15,7 @@ VbetterComp(x, y)
 A logical vector where each position indicates whether the values in those positions of the input vectors are equal.  NAs are considered equal.
 }
 \description{
-Compare two vectors element by element
+Compare two vectors for equality element by element
 }
 \examples{
 ex1 = 6:10

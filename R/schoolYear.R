@@ -8,18 +8,25 @@
 #' schoolYear("TermID")
 #' schoolYear(y = as.Date("2015-09-13"))
 #' schoolYear(x = "TermID", y = as.Date("2015-02-13"))
+#' schoolYear(x = "end")
+#' schoolYear("end", as.Date("2015-09-13"))
+#' schoolYear("end", as.Date("2015-02-13"))
+#' schoolYear(x = "start")
+#' schoolYear("start", as.Date("2015-09-13"))
+#' schoolYear("start", as.Date("2015-02-13"))
 schoolYear = function(x = "year", y = Sys.Date()){
   x = tolower(x)
   year = as.integer(format(y, "%Y"))
-  schoolyearend = as.Date(paste0(year,"-06-30"))
-  if(y <= schoolyearend) year = year - 1             # adjust for the Spring
-  schoolyearend = as.Date(paste0(year + 1,"-06-30")) # the actual date of the end of the school year
+  if(y <= as.Date(paste0(year, "-06-30"))) year = year - 1 # adjust for the Spring
+  schoolyearend = as.Date(paste0(year + 1, "-06-30"))      # date of the end of the school year
+  schoolyearstart = as.Date(paste0(year, "-07-01"))        # date of the start of the school year
 
   # Figure out what to return
   ret = NA
   if(x == "year") ret = year
   if(x %in% c("termid", "term id")) ret = 100 * (year - 1990)
   if(x == "end") ret = schoolyearend
+  if(x == "start") ret = schoolyearstart
 
   # Return
   return(ret)
@@ -42,5 +49,6 @@ BedsDate = function(year = schoolYear()){
   }
   return(BedsDay)
 } # /function
+
 
 

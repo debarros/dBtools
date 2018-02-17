@@ -9,19 +9,19 @@ MbetterComp(x, y)
 \arguments{
 \item{x}{A numeric matrix}
 
-\item{y}{A numeric matrix}
+\item{y}{A numeric matrix with the same dimensions as \code{x}}
 }
 \value{
-TRUE if all of the corresponding entries have equal values, where NA entries are considered equal.  Otherwise, FALSE.
+a logical matrix of the same dimensions as the inputs, showing TRUE if the corresponding input entries have equal values (where NA entries are considered equal and less than -Inf), otherwise FALSE.
 }
 \description{
 Test two matrices for equality, where NA entries are considered equal
 }
 \examples{
-m1 = matrix(data = c(1:12,1:12), nrow = 6)
-m2 = matrix(1:24,nrow = 6)
-m3 = matrix(1:24,nrow = 4)
-m4 = matrix(c(rep(NA,12),1:12)
+m1 = matrix(data = c(1:12, 1:12), nrow = 6)
+m2 = matrix(1:24, nrow = 6)
+m3 = matrix(c(1:6, rep(NA, 12), 11:6), nrow = 6)
+m4 = matrix(c(rep(NA, 12), 1:12), nrow = 6)
 MbetterComp(m1, m2)
 MbetterComp(m1, m3)
 MbetterComp(m1, m4)
