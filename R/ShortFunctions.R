@@ -106,3 +106,18 @@ SWSM = function(expr){
   suppressMessages(suppressWarnings(expr))
 }
 
+
+
+#' @title Convert dates from Excel
+#' @description Convert date values pulled from an Excel workbook, such as .xslx.  This function just runs as.Date with the origin set to "1899-12-30".  Excel apparently uses this as the origin because they did not realize that 1900 was not a leap year.
+#' @param x a numeric vector
+#' @return A vector containing the elements of \code{x} converted to Date format
+#' @examples
+#' xlDate(42359)
+#' xlDate(0)
+#' xlDate(-1365)
+#' datevector = 40000 + (1:10)*365
+#' xlDate(datevector)
+xlDate = function(x){
+  as.Date(x, origin = "1899-12-30")
+}
