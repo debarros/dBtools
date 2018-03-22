@@ -1,5 +1,11 @@
-
-
+#' @title Make Bulk Upload for the Child Nutrition Management System
+#' @description Test two matrices for equality, where NA entries are considered equal
+#' @param xlsxFile An xlsx file, Workbook object, or URL to an xlsx file
+#' @param BedsCode The 12 digit BEDS code for the LEA (Local Education Agency, usually a district)
+#' @param singleGender Indicator of single gender LEA.  Acceptable values are "M", "F", and NULL
+#' @param uploadfilename Name of the output file.  Should end in ".txt"
+#' @param messageLevel Numeric of length 1 indicating the level of messages to print
+#' @return Nothing is returned
 CNMS.MakeBulkUpload = function(xlsxFile,
                                BedsCode = "010100860907",
                                singleGender = NULL,
