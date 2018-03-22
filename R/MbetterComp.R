@@ -1,5 +1,5 @@
-#' Test two matrices for equality, where NA entries are considered equal
-#'
+#' @title Matrix Better Comparison
+#' @description Test two matrices for equality, where NA entries are considered equal
 #' @param x A numeric matrix
 #' @param y A numeric matrix with the same dimensions as \code{x}
 #' @return a logical matrix of the same dimensions as the inputs, showing TRUE if the corresponding input entries have equal values (where NA entries are considered equal and less than -Inf), otherwise FALSE.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/MbetterComp.R
 \name{MbetterComp}
 \alias{MbetterComp}
-\title{Test two matrices for equality, where NA entries are considered equal}
+\title{Matrix Better Comparison}
 \usage{
 MbetterComp(x, y)
 }
