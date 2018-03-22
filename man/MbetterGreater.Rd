@@ -2,7 +2,7 @@
 % Please edit documentation in R/betterGreater.R
 \name{MbetterGreater}
 \alias{MbetterGreater}
-\title{Test two matrices element by element to see if the first is greater than the second, where NA entries are considered equal and less than -Inf}
+\title{Matrix Better Greater Than}
 \usage{
 MbetterGreater(x, y)
 }

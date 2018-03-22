@@ -93,8 +93,8 @@ VbetterGreater = function(x,y){
 
 
 
-#' Test two matrices element by element to see if the first is greater than the second, where NA entries are considered equal and less than -Inf
-#'
+#' @title Matrix Better Greater Than
+#' @description Test two matrices element by element to see if the first is greater than the second, where NA entries are considered equal and less than -Inf
 #' @param x A numeric matrix
 #' @param y A numeric matrix with the same dimensions as \code{x}
 #' @return a logical matrix of the same dimensions as the inputs, showing TRUE if the corresponding entry of the first matrix is greater than that of the second (where NA entries are considered equal and less than -Inf), otherwise FALSE.
