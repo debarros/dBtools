@@ -26,5 +26,5 @@ read.xlsx.multi(folder, sheet = 1, pattern = NULL, dupVar = NULL,
 data.frame
 }
 \description{
-Read all the xlsx files in a folder than have filenames matching a given pattern and return a single data.frame
+Read all the xlsx files in a folder that have filenames matching a given pattern and return a single data.frame
 }

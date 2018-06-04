@@ -1,5 +1,5 @@
 #' @title Read Multiple Excel workbooks
-#' @description Read all the xlsx files in a folder than have filenames matching a given pattern and return a single data.frame
+#' @description Read all the xlsx files in a folder that have filenames matching a given pattern and return a single data.frame
 #' @param folder character of length 1 with the address of a folder
 #' @param sheet integer or character of length 1 indicating the worksheet to use
 #' @param pattern	character string containing a regular expression to be matched in the given character vector. Coerced by as.character to a character string if possible. If a character vector of length 2 or more is supplied, the first element is used with a warning.
