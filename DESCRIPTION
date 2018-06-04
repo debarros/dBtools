@@ -1,14 +1,17 @@
 Package: dBtools
 Type: Package
 Title: Functions From de Barros
-Version: 0.0.0.9016
-Date: 2018-03-22
+Version: 0.0.0.9017
+Date: 2018-06-04
 Authors@R: person("Paul", "de Barros", email = "pj.debarros@gmail.com", role = c("aut", "cre"))
 Description: Install this package to make available a number of useful functions.
 License: GPL-3
 Imports:
     abind,
     openxlsx,
-    data.table
+    data.table,
+    jsonlite,
+    httr,
+    stringr
 LazyData: true
 RoxygenNote: 6.0.1
