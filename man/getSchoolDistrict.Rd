@@ -4,12 +4,14 @@
 \alias{getSchoolDistrict}
 \title{Get School District}
 \usage{
-getSchoolDistrict(addr, halt = T)
+getSchoolDistrict(addr, halt = T, messageLevel = 0)
 }
 \arguments{
 \item{addr}{Character vector of length 1 containing an address}
 
 \item{halt}{logical of length 1 indicating whether to halt if no school district is found}
+
+\item{messageLevel}{integer of length 1 indicating the level of messaging to print}
 }
 \value{
 Character vector of length 1 containing the name of the school district or NA
