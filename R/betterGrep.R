@@ -1,4 +1,4 @@
-#Vgrep.R
+#betterGrep.R
 
 #### betterGrep ####
 betterGrep = function(pattern, x, ignore.case = T){
@@ -13,5 +13,5 @@ betterGrep = function(pattern, x, ignore.case = T){
 
 
 
-#### Vgrep ####
-Vgrep = Vectorize(FUN = betterGrep, vectorize.args = "pattern")
+#### VbetterGrep ####
+VbetterGrep = Vectorize(FUN = betterGrep, vectorize.args = "pattern")
