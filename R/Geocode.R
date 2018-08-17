@@ -32,6 +32,10 @@ getSchoolDistrict <- function (addr, halt = T, messageLevel = 0) {
   addr <- stringr::str_replace_all(string = addr, pattern = " ", replacement = "+")
   addr <- stringr::str_replace_all(string = addr, pattern = "#", replacement = "%23")
 
+  # Remove parentheses because the census API doesn't like them.
+  addr <- stringr::str_replace_all(string = addr, pattern = "(", replacement = "")
+  addr <- stringr::str_replace_all(string = addr, pattern = ")", replacement = "")
+
   # Make the request URL and query the API
   a <- paste0("https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=",
               addr,
