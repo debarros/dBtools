@@ -50,7 +50,10 @@ DFna.to.empty = function(x, coltypes = "all"){
           y[which(is.na(y))] = ""       # make NA's blank
         } # /if y has any NA's
       } else {                          # if it's not factor
-        y = na.to.empty(y)              # run na.to.empty
+        if(any(is.na(y))){              # if there are any missing values
+          y = as.character(y)           # convert to character
+          y = na.to.empty(y)            # run na.to.empty
+        } # /if y has NA entries
       } # /if-else y is factor
       x[,i] = y                         # load the values back in the data.frame
     } # /if this is a column to use
