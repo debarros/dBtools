@@ -9,8 +9,10 @@
 write.psimport <- function (x, file, messageLevel = 0) {
 
   # Error Handling
-  if(length(x) != 1){
-    stop("x must have length 1")
+  if(!(is.matrix(x) | is.data.frame(x))){
+    if(length(x) != 1){
+      stop("x must have length 1")
+    }
   }
   if(!is.character(file)){
     stop("file must be of type character")
