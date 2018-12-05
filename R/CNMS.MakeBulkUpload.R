@@ -28,7 +28,7 @@ CNMS.MakeBulkUpload = function(xlsxFile,
   }
 
   # Establish a full guardian name from the first and last names
-  CheckStuData$guardian2 = paste0(CheckStuData$Guardian_FN," ", CheckStuData$Guardian_LN)
+  CheckStuData$guardian2 = paste0(CheckStuData$StudentCoreFields.guardian_fn," ", CheckStuData$StudentCoreFields.guardian_ln)
   CheckStuData$guardian2[nchar(CheckStuData$guardian2) == 1] = ""
 
   # Define the output variables
@@ -36,20 +36,19 @@ CNMS.MakeBulkUpload = function(xlsxFile,
                  "Address1","Address2","City","State","ZIP","Phone","Guardian1","Guardian2")
 
   # Determine which variables in the input are associated with each field in the output
-  zipVars = c("2nd_mailing_zip","Zip","Mailing_Zip")
+  zipVars = c("U_STUDENT_ENROLLMENT_PAGE.MAILING_2_ZIP","Zip","Mailing_Zip")
   fnVars = c("First_Name")
   lnVars = "Last_Name"
   dobVars = "DOB"
-  addrVars = c("2nd_mailing_street", "Mailing_Street","Street")
-  cityVars = c("Mailing_City", "City", "2nd_mailing_city")
-  phonVars = c("Home_Phone","Emerg_Phone_1","Emerg_Phone_2","StudentCoreFields.emerg_3_phone","StudentCoreFields.father_home_phone",
-               "StudentCoreFields.guardiandayphone","StudentCoreFields.fatherdayphone","StudentCoreFields.mother_home_phone",
-               "StudentCoreFields.motherdayphone","U_STUDENT_ENROLLMENT_PAGE.emerg_cell_phone_1","U_STUDENT_ENROLLMENT_PAGE.EMERG_CELL_PHONE_2",
-               "U_STUDENT_ENROLLMENT_PAGE.EMERG_CELL_PHONE_3","U_STUDENT_ENROLLMENT_PAGE.emerg_work_phone_1",
-               "U_STUDENT_ENROLLMENT_PAGE.EMERG_WORK_PHONE_2","U_STUDENT_ENROLLMENT_PAGE.EMERG_WORK_PHONE_3",
-               "U_STUDENT_ENROLLMENT_PAGE.father_cell_phone","U_STUDENT_ENROLLMENT_PAGE.mother_cell_phone",
-               "U_STUDENT_ENROLLMENT_PAGE.step_cell_phone","U_STUDENT_ENROLLMENT_PAGE.STEP_HOME_PHONE","U_STUDENT_ENROLLMENT_PAGE.stepdayphone")
-  guardVars = c("Father", "guardian", "Mother", "guardian2")
+  addrVars = c("U_STUDENT_ENROLLMENT_PAGE.MAILING_2_STREET", "Mailing_Street","Street")
+  cityVars = c("Mailing_City", "City", "U_STUDENT_ENROLLMENT_PAGE.MAILING_2_CITY")
+  phonVars = c("StudentCoreFields.guardiandayphone", "StudentCoreFields.father_home_phone", "U_STUDENT_ENROLLMENT_PAGE.stepdayphone",
+               "U_STUDENT_ENROLLMENT_PAGE.STEP_HOME_PHONE", "U_STUDENT_ENROLLMENT_PAGE.step_cell_phone", "U_STUDENT_ENROLLMENT_PAGE.mother_cell_phone",
+               "U_STUDENT_ENROLLMENT_PAGE.father_cell_phone", "U_STUDENT_ENROLLMENT_PAGE.EMERG_WORK_PHONE_3", "U_STUDENT_ENROLLMENT_PAGE.EMERG_WORK_PHONE_2",
+               "U_STUDENT_ENROLLMENT_PAGE.emerg_work_phone_1", "U_STUDENT_ENROLLMENT_PAGE.EMERG_CELL_PHONE_3", "U_STUDENT_ENROLLMENT_PAGE.EMERG_CELL_PHONE_2",
+               "U_STUDENT_ENROLLMENT_PAGE.emerg_cell_phone_1", "StudentCoreFields.motherdayphone", "StudentCoreFields.mother_home_phone",
+               "StudentCoreFields.emerg_3_phone", "Emerg_Phone_2", "Emerg_Phone_1", "Home_Phone")
+  guardVars = c("Father", "StudentCoreFields.guardian", "Mother", "guardian2")
 
 
   # Establish a list to hold the student information in list format
