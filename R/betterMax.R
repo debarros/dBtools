@@ -1,5 +1,5 @@
-#' Find the maximum value of a object that may contain NA's.
-#'
+#' @title Better Max
+#' @description Find the maximum value of a object that may contain NA's.
 #' @param x An object such as a numeric vector, matrix, or data.frame
 #' @return The largest value in \code{x}, if any.  Otherwise, NA.
 #' @examples

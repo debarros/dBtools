@@ -2,7 +2,7 @@
 % Please edit documentation in R/betterMax.R
 \name{betterMax}
 \alias{betterMax}
-\title{Find the maximum value of a object that may contain NA's.}
+\title{Better Max}
 \usage{
 betterMax(x)
 }
