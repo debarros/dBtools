@@ -1,9 +1,9 @@
-#' @title Make Bulk Upload for the Child Nutrition Management System
-#' @description Test two matrices for equality, where NA entries are considered equal
+#' @title Make Bulk Upload for NYSSIS/Child Nutrition Management System
+#' @description Based on an export from the Student Management System, generate a text file that can be uploaded to NYSSIS (using the CN role) to generate matches to SNAP and Medicaid records for direct certification of free lunch eligibility
 #' @param xlsxFile An xlsx file, Workbook object, or URL to an xlsx file
 #' @param BedsCode The 12 digit BEDS code for the LEA (Local Education Agency, usually a district)
 #' @param singleGender Indicator of single gender LEA.  Acceptable values are "M", "F", and NULL
-#' @param uploadfilename Name of the output file.  Should end in ".txt"
+#' @param uploadfilename Name of the output file.  Should end in ".txt".  Defaults to "bulkupload.txt".
 #' @param messageLevel Numeric of length 1 indicating the level of messages to print
 #' @return Nothing is returned
 CNMS.MakeBulkUpload = function(xlsxFile,
@@ -14,7 +14,7 @@ CNMS.MakeBulkUpload = function(xlsxFile,
 
   # Read in the student data export from PowerSchool
   CheckStuData = read.xlsx(xlsxFile = xlsxFile)
-  CheckStuData$DOB = as.Date(CheckStuData$DOB, origin = "1899-12-30")
+  CheckStuData$DOB = xlDate(CheckStuData$DOB)
   if(!is.null(singleGender)){
     if(singleGender %in% c("M", "F")){
       CheckStuData$Gender = singleGender
