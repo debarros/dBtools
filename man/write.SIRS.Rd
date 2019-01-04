@@ -2,18 +2,18 @@
 % Please edit documentation in R/writeSIRS.R
 \name{write.SIRS}
 \alias{write.SIRS}
-\title{Write SIRS Extract}
+\title{Write Level 0 SIRS Extract}
 \usage{
 write.SIRS(x, filename)
 }
 \arguments{
-\item{x}{the object to be written, preferably a matrix or data frame. If not, it is attempted to coerce x to a data frame.}
+\item{x}{the object to be written, preferably a matrix or data frame. If not, it is attempted to coerce \code{x} to a data frame.}
 
-\item{filename}{a character string naming a file}
+\item{filename}{a character string naming a file.}
 }
 \value{
 nothing is returned
 }
 \description{
-Write a csv file in the manner needed for SIRS extracts
+Write a csv file in the manner needed for importing into Level 0
 }
