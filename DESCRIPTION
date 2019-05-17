@@ -1,8 +1,8 @@
 Package: dBtools
 Type: Package
 Title: Functions From de Barros
-Version: 0.0.0.9019
-Date: 2019-01-04
+Version: 0.0.0.9020
+Date: 2019-05-17
 Authors@R: person("Paul", "de Barros", email = "pj.debarros@gmail.com", role = c("aut", "cre"))
 Description: Install this package to make available a number of useful functions.
 License: GPL-3
@@ -14,4 +14,4 @@ Imports:
     httr,
     stringr
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
