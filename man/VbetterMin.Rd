@@ -9,10 +9,12 @@ VbetterMin(x, y)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{y}{A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)}
+\item{y}{A numeric vector of the same length as \code{x} or of length 1 (if \code{y} has length 1, it will be repeated to the
+length of \code{x})}
 }
 \value{
-A numeric vector where each position is the smallest value stored in those positions of the input vectors.  If both input vectors have NA for a particular position, that position in the output will also contain NA.
+A numeric vector where each position is the smallest value stored in those positions of the input vectors.  If both
+  input vectors have NA for a particular position, that position in the output will also contain NA.
 }
 \description{
 Find the element by element min of two vectors

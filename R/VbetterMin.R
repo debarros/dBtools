@@ -1,8 +1,10 @@
 #' @title Vector Better Min
 #' @description Find the element by element min of two vectors
 #' @param x A numeric vector
-#' @param y A numeric vector of the same length as \code{x} or of length 1 (if y has length 1, it will be repeated to the length of x)
-#' @return A numeric vector where each position is the smallest value stored in those positions of the input vectors.  If both input vectors have NA for a particular position, that position in the output will also contain NA.
+#' @param y A numeric vector of the same length as \code{x} or of length 1 (if \code{y} has length 1, it will be repeated to the
+#'   length of \code{x})
+#' @return A numeric vector where each position is the smallest value stored in those positions of the input vectors.  If both
+#'   input vectors have NA for a particular position, that position in the output will also contain NA.
 #' @examples
 #' ex1 = 6:10
 #' ex2 = (1:5)*3
