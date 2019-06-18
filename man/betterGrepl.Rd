@@ -7,9 +7,12 @@
 betterGrepl(pattern, x, ignore.case = T, fixed = T)
 }
 \arguments{
-\item{pattern}{character string containing a regular expression (or character string for fixed = TRUE) to be matched in the given character vector. Coerced by as.character to a character string if possible. If a character vector of length 2 or more is supplied, the first element is used with a warning.}
+\item{pattern}{character string containing a regular expression (or character string for fixed = TRUE) to be matched in the
+given character vector. Coerced by as.character to a character string if possible. If a character vector of length 2 or more
+is supplied, the first element is used with a warning.}
 
-\item{x}{a character vector where matches are sought, or an object which can be coerced by as.character to a character vector. Long vectors are supported.}
+\item{x}{a character vector where matches are sought, or an object which can be coerced by as.character to a character vector.
+Long vectors are supported.}
 
 \item{ignore.case}{logical.  if FALSE, the pattern matching is case sensitive and if TRUE, case is ignored during matching.}
 
@@ -19,13 +22,14 @@ betterGrepl(pattern, x, ignore.case = T, fixed = T)
 Logical vector of the same length as \code{x} indicating which elements had matches
 }
 \description{
-This function behaves similarly to grepl, except that an NA pattern or NA element of \code{x} returns FALSE, but NA matched to NA returns TRUE
+This function behaves similarly to grepl, except that an NA pattern or NA element of \code{x} returns FALSE, but
+  NA matched to NA returns TRUE
 }
 \examples{
 x = c("Alpha", "Beta", "Bet", NA_character_, "B")
 betterGrepl(pattern = "a", x)
-betterGrepl(pattern = NA, x)
-betterGrepl(pattern = NA, x, ignore.case = F)
+betterGrepl(pattern = NA_character_, x)
+betterGrepl(pattern = NA_character_, x, ignore.case = F)
 betterGrepl("Beta", x)
 betterGrepl("B", x)
 betterGrepl("X", x)
