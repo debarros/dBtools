@@ -258,4 +258,28 @@ SummerSchool5 = function(students, RevisedGrades){
 
 
 
+#' @title Summer School 6
+#' @description If a course is canceled due to underenrollment, reassign the student
+#' @param RevisedGrades data.frame of grades
+#' @param SummerCourses data.frame of summer courses
+#' @return data.frame based on the \code{RevisedGrades} input
+SummerSchool6 = function(RevisedGrades, SummerCourses){
 
+  for(i in 1:nrow(RevisedGrades)){
+    if(RevisedGrades$ThePlan[i] == "Definitely Summer"){
+      curCourse = RevisedGrades$SummerCourse[i]
+      curSections = SummerCourses$SectionCount[SummerCourses$Equivalent.Summer.Course == curCourse]
+      if(curSections == 0){
+        onPlato = RevisedGrades$OnPlato[i]
+        if(onPlato == "Yes"){
+          RevisedGrades$ThePlan[i] = "Summer on Plato"
+        } else {
+          RevisedGrades$ThePlan[i] = "Retake next year"
+        } # if-else course is available on plato
+      } # /if no sections
+    } # /if plan is definitely summer
+  } # /for each grade
+
+  return(RevisedGrades)
+
+} # /function
