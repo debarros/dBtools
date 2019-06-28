@@ -283,3 +283,76 @@ SummerSchool6 = function(RevisedGrades, SummerCourses){
   return(RevisedGrades)
 
 } # /function
+
+
+
+
+
+
+
+
+
+#' @title Summer Assign Students
+#' @description Place students into sections of courses
+#' @param AssignmentList a list containing three data.frames: SummerEnrollments, sectionTable, and students
+#' @return a list based on the \code{AssignmentList} input with updated versions of the three elements
+Summer.AssignStudents = function(AssignmentList){
+
+  SummerEnrollments = AssignmentList$SummerEnrollments
+  sectionTable = AssignmentList$sectionTable
+  students = AssignmentList$students
+
+  for(i in 1:nrow(SummerEnrollments)){
+
+    curStud = SummerEnrollments$Student[i]
+    curID = SummerEnrollments$Student.Number[i]
+    curCourse = SummerEnrollments$SummerCourse[i]
+    curHasP = vector(length = 3)
+    curHasP[1] = students$HasP1[students$Student.Number == curID]
+    curHasP[2] = students$HasP2[students$Student.Number == curID]
+    curHasP[3] = students$HasP3[students$Student.Number == curID]
+
+    curCoursePrefs = sectionTable$Preference[sectionTable$Course == curCourse]
+    curCoursePeriods = sectionTable$Period[sectionTable$Course == curCourse]
+    curScheduled = F
+    curPrefIndex = 1
+    while (!curScheduled & curPrefIndex <= length(curCoursePrefs)) {
+
+      curPref = curCoursePrefs[curPrefIndex]
+      curPer = curCoursePeriods[curPrefIndex]
+      curRoster = sectionTable$Roster[sectionTable$Preference == curPref][[1]]
+      curRosterNames = sectionTable$RosterNames[sectionTable$Preference == curPref][[1]]
+      openSeats = is.na(curRoster)
+      hasSpace = any(openSeats)
+      studAvailable = !curHasP[curPer]
+
+      if(hasSpace & studAvailable)  {
+
+        curRoster[is.na(curRoster)][1] = curID
+        curRosterNames[is.na(curRosterNames)][1] = curStud
+        sectionTable$Roster[sectionTable$Preference == curPref][[1]] = curRoster
+        sectionTable$RosterNames[sectionTable$Preference == curPref][[1]] = curRosterNames
+
+        students[students$Student.Number == curID, paste0("HasP", curPer)] = T
+
+        curScheduled = T
+
+      }
+
+      curPrefIndex = curPrefIndex + 1
+
+    } # /while
+
+    # check to see if it worked
+    if(!curScheduled){
+      SummerEnrollments$ManualAdjustment[i] = T
+    }
+
+  }
+
+  AssignmentList = list("SummerEnrollments" = SummerEnrollments, "sectionTable" = sectionTable, "students" = students)
+  return(AssignmentList)
+
+} # /function
+
+
