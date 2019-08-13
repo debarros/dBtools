@@ -27,3 +27,34 @@ VbetterMax = function(x,y){
   } # /if
   apply(X = cbind(x,y), MARGIN = 1, FUN = betterMax)
 }
+
+
+
+
+
+
+
+
+
+
+#' @title Matrix to Vector Better Max
+#' @description Collapse a 2d matrix by taking the betterMax of each row or column
+#' @param X a numeric matrix
+#' @param MARGIN integer of length 1 indicating whether to get the max of each row (1) or column (2)
+#' @return A numeric vector where each position contains the largest value stored in that row or column of the input matrix.  If all values are NA for a particular position, that position in the output will also contain NA.
+#' @examples
+#' ex1 = matrix(c(1:5,NA,1:4,NA,2), 3, 4)
+#' ex2 = matrix(c(5:7,NA,NA,NA), 2, 3)
+#' M2VbetterMax(ex1, 1)
+#' M2VbetterMax(ex1, 2)
+#' M2VbetterMax(ex2, 1)
+#' M2VbetterMax(ex2, 2)
+M2VbetterMax = function(X, MARGIN = 1){
+  if(length(dim(X)) != 2){
+    stop("X must be a 2d matrix")
+  } # /if
+  if(!(MARGIN %in% c(1,2))){
+    stop("MARGIN must be either 1 or 2")
+  }
+  apply(X = X, MARGIN = MARGIN, FUN = betterMax)
+}
