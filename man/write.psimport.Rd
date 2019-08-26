@@ -4,12 +4,14 @@
 \alias{write.psimport}
 \title{Write PowerSchool Import File}
 \usage{
-write.psimport(x, file, messageLevel = 0)
+write.psimport(x, file, type = "quick", messageLevel = 0)
 }
 \arguments{
 \item{x}{the object to be written, preferably a matrix or data frame. If not, it is attempted to coerce x to a data frame.}
 
 \item{file}{a character string naming a file}
+
+\item{type}{either "quick" (if using the quick import function) or "manager" (if using the data import manager).  Defaults to "quick".}
 
 \item{messageLevel}{integer of length 1 indicating the level of messaging to print}
 }
