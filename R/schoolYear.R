@@ -1,8 +1,10 @@
 #' @title School Year
 #' @description Determine the current school year
-#' @param x type of information to be returned, defaults to "year".  Other acceptable values include termID and end
+#' @param x type of information to be returned, defaults to "year".  Other acceptable values include termID, start, end, brief,
+#'   and full
 #' @param y date, defaults to the current system date
-#' @return integer - the year, term id, or date of the end of the school year
+#' @return If \code{y} is year or termid, an integer is returned.  If \code{y} is start or end, a date is returned.  If \code{y}
+#'   is brief or full, a character string is returned.
 #' @examples
 #' schoolYear()
 #' schoolYear("TermID")
@@ -14,6 +16,8 @@
 #' schoolYear(x = "start")
 #' schoolYear("start", as.Date("2015-09-13"))
 #' schoolYear("start", as.Date("2015-02-13"))
+#' schoolYear("full")
+#' schoolYear("brief")
 schoolYear = function(x = "year", y = Sys.Date()){
   x = tolower(x)
   year = as.integer(format(y, "%Y"))
@@ -27,10 +31,14 @@ schoolYear = function(x = "year", y = Sys.Date()){
   if(x %in% c("termid", "term id")) ret = 100 * (year - 1990)
   if(x == "end") ret = schoolyearend
   if(x == "start") ret = schoolyearstart
+  if(x == "full") ret = paste0(year, "-", year + 1)
+  if(x == "brief") ret = paste0(year %% 100, "-", (year + 1) %% 100) # The %% operator give the remainder after division
 
   # Return
   return(ret)
 }
+
+
 
 
 #' @title BEDS Date

@@ -7,12 +7,14 @@
 schoolYear(x = "year", y = Sys.Date())
 }
 \arguments{
-\item{x}{type of information to be returned, defaults to "year".  Other acceptable values include termID and end}
+\item{x}{type of information to be returned, defaults to "year".  Other acceptable values include termID, start, end, brief,
+and full}
 
 \item{y}{date, defaults to the current system date}
 }
 \value{
-integer - the year, term id, or date of the end of the school year
+If \code{y} is year or termid, an integer is returned.  If \code{y} is start or end, a date is returned.  If \code{y}
+  is brief or full, a character string is returned.
 }
 \description{
 Determine the current school year
@@ -28,4 +30,6 @@ schoolYear("end", as.Date("2015-02-13"))
 schoolYear(x = "start")
 schoolYear("start", as.Date("2015-09-13"))
 schoolYear("start", as.Date("2015-02-13"))
+schoolYear("full")
+schoolYear("brief")
 }
