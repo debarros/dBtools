@@ -119,5 +119,8 @@ SWSM = function(expr){
 #' datevector = 40000 + (1:10)*365
 #' xlDate(datevector)
 xlDate = function(x){
+  if(!is.integer(x)){
+    x = as.integer(x)
+  }
   as.Date(x, origin = "1899-12-30")
 }
