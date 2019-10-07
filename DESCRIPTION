@@ -1,8 +1,8 @@
 Package: dBtools
 Type: Package
 Title: Functions From de Barros
-Version: 0.0.0.9026
-Date: 2019-09-04
+Version: 0.0.0.9027
+Date: 2019-10-07
 Authors@R: person("Paul", "de Barros", email = "pj.debarros@gmail.com", role = c("aut", "cre"))
 Description: Install this package to make available a number of useful functions.
 License: GPL-3
