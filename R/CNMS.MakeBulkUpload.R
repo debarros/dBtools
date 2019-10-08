@@ -58,8 +58,11 @@ CNMS.MakeBulkUpload = function(xlsxFile,
   guardComponentColumns = c("StudentCoreFields.guardian_fn", "StudentCoreFields.guardian_ln", "Guardian_FN", "Guardian_LN")
 
 
-  columnsNotUsed = setdiff(colnames(CheckStuData), c(zipVars, fnVars, lnVars, dobVars, addrVars, cityVars, phonVars, guardVars, guardComponentColumns))
-  columnsNotFound = setdiff(c(zipVars, fnVars, lnVars, dobVars, addrVars, cityVars, phonVars, guardVars, guardComponentColumns), colnames(CheckStuData))
+  colnames(CheckStuData)[tolower(colnames(CheckStuData)) == "student_number"] = "student_number"
+
+  # Check columns
+  columnsNotUsed = setdiff(colnames(CheckStuData), c(zipVars, fnVars, lnVars, dobVars, addrVars, cityVars, phonVars, guardVars, guardComponentColumns, "student_number"))
+  columnsNotFound = setdiff(c(zipVars, fnVars, lnVars, dobVars, addrVars, cityVars, phonVars, guardVars, guardComponentColumns, "student_number"), colnames(CheckStuData))
 
   if(length(columnsNotUsed) > 0){
     print("The following columns are in the import file, but will not be used:")
@@ -81,7 +84,7 @@ CNMS.MakeBulkUpload = function(xlsxFile,
     x = vector(mode = "list", length = length(outputVars))
     names(x) = outputVars
     x$BedsCode = BedsCode
-    x$StudentID = CheckStuData$Student_number[i]
+    x$StudentID = CheckStuData$student_number[i]
     x$Gender = CheckStuData$Gender[i]
     x$State = "NY"
     x$LastName = unlist(unique(c(CheckStuData[i,lnVars])))
