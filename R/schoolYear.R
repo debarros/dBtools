@@ -60,3 +60,23 @@ BedsDate = function(year = schoolYear()){
 
 
 
+
+
+
+#' @title October 1st
+#' @description Determine the date of October 1st in a school year
+#' @param year integer - the 4 digit year at the beginning of the school year.  Defaults to current school year.
+#' @return date - the date of October 1st day for the given school year
+#' @examples
+#' Oct1()
+#' Oct1(2013)
+Oct1 = function(year = schoolYear()){
+  OctoberFirst = as.Date(paste0(year,"-10-01"))
+  return(OctoberFirst)
+} # /function
+
+
+
+
+
+
