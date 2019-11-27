@@ -108,6 +108,31 @@ SWSM = function(expr){
 
 
 
+
+
+
+#' @title Sort Unlist Unique
+#' @description Get the unique set, convert it from list to vector, and then sort it
+#' @param thing thing to get a sorted, unlisted vector of.  This is often a column of a data.table.
+#' @examples
+#' X = sample(x = letters[1:20], size = 30, replace = T, prob = (1:20)/sum(1:20))
+#' Y = sample(x = letters[1:20], size = 30, replace = T, prob = (1:20)/sum(1:20))
+#' Z = sample(x = letters[1:20], size = 30, replace = T, prob = (1:20)/sum(1:20))
+#' thing1 = data.table(X = X, Y = Y, Z = Z, stringsAsFactors = F)
+#' thing2 = thing1[,2,with = F]
+#' thing3 = SUU(thing2)
+#' print(thing3)
+#' str(thing3)
+#' SUU(thing1[,1,with = F])
+#' SUU(thing1[,3,with = F])
+SUU = function(thing){
+  sort(unlist(unique(thing)))
+}
+
+
+
+
+
 #' @title Convert dates from Excel
 #' @description Convert date values pulled from an Excel workbook, such as .xslx.  This function just runs as.Date with the origin set to "1899-12-30".  Excel apparently uses this as the origin because they did not realize that 1900 was not a leap year.
 #' @param x a numeric vector
