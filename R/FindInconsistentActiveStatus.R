@@ -7,13 +7,16 @@ FindInconsistentActiveStatus = function(psStudentsRaw, Workbook){
 
   InPS = psStudentsRaw$student_number                                                      # students in PS
   ActiveInPS = psStudentsRaw$student_number[psStudentsRaw$Enroll_Status == 0]              # students active in PS
+  InactiveInPS = setdiff(InPS, ActiveInPS)                                                 # students inactive in PS
+
   InWorkbook = Workbook$`Local.ID.(optional)`                                              # students in wkbk
   ActiveInWorkbook = Workbook$`Local.ID.(optional)`[(Workbook$`Still.Enrolled?` == "yes")] # students active in wkbk
-  inBoth = intersect(InWorkbook, InPS)                                                     # students in both wkbk and PS
   InactiveInWorkbook = setdiff(InWorkbook, ActiveInWorkbook)                               # students inactive in wkbk
+
+  inBoth = intersect(InWorkbook, InPS)                                                     # students in both wkbk and PS
   ActiveInPS.InactiveInWkbk = intersect(ActiveInPS, InactiveInWorkbook)                    # students active PS, inactive in wkbk
   ActiveInPS.NotInWorkbook = setdiff(ActiveInPS, InWorkbook)                               # students active PS, not in wkbk
-  ActiveInWorkbook.InactiveInPS = setdiff(intersect(ActiveInWorkbook,InPS), ActiveInPS)    # students active in wkbk, inactive in PS
+  ActiveInWorkbook.InactiveInPS = intersect(ActiveInWorkbook, InactiveInPS)                # students active in wkbk, inactive in PS
   ActiveInWorkbook.NotInPS = setdiff(ActiveInWorkbook, InPS)                               # students active in wkbk, not in PS
 
   # Compile information into one readable table
@@ -38,6 +41,9 @@ FindInconsistentActiveStatus = function(psStudentsRaw, Workbook){
       } # /if-else ActiveInWorkbook
 
     } # /for each inconsistency
+
+    inconsistencies$PSgrade = psStudentsRaw$grade_level[match(inconsistencies$Student.ID, psStudentsRaw$student_number)]
+    inconsistencies$Wkbkgrade = Workbook$`Grade.(leave.blank.if.no.longer.enrolled)`[match(inconsistencies$Student.ID, Workbook$student_number)]
 
   } # /if there are any inconsistencies
 
