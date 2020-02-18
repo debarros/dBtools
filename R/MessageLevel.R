@@ -35,19 +35,18 @@ MLprint = function(message,
 } # /function
 
 
-#' @title MLprint
+#' @title Vector MLprint
 #' @description print the message level
-#' @param message The message to be printed (or not).  It's a character vector of length 1.
+#' @param messages The messages to be printed (or not).  Character vector where each element is one message to print.
 #' @param ML integer vector length 2.  The first element indicates how deep to print messages.  The second element indicates how
 #'   many layers deep already.
 #' @param indent integer length 1 - how many spaces to indent at each level.  Defaults to 2.
 #' @param indentCharacter character length 1, nchar 1, the character to use for indenting messages
 #' @return Nothing gets returned
-#' @note This function decides whether or not to print a message, and how much to indent it.  Whenever the ML parameter is passed
-#'   between functions, the first element should remain constant, and the second element should be increased by 1.
+#' @note This function acts as a vectorized version of MLprint
 vMLprint = function(messages,
                     ML = c(0, 0),
-                    indent = 2) {
+                    indent = 2, indentCharacter = " ") {
   if (ML[2] < 0) {
     # If the indent level is negative
     stop("The second element of ML cannot be less than zero.") # throw an error
@@ -58,7 +57,7 @@ vMLprint = function(messages,
     for (i in 1:length(messages)) {
       # for each message
       thisMessage = messages[i]                                # select the message
-      MLprint(thisMessage, ML, indent)                         # call MLprint
+      MLprint(thisMessage, ML, indent, indentCharacter)                         # call MLprint
     } # /for each message
   } # /if it's not too deep
 
