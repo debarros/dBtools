@@ -1,3 +1,5 @@
+# schoolYear.R
+
 #' @title School Year
 #' @description Determine the current school year
 #' @param x type of information to be returned, defaults to "year".  Other acceptable values include termID, start, end, brief,
