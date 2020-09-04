@@ -4,9 +4,13 @@
 \alias{CNMS.MakeBulkUpload}
 \title{Make Bulk Upload for NYSSIS/Child Nutrition Management System}
 \usage{
-CNMS.MakeBulkUpload(xlsxFile, BedsCode = "010100860907",
-  singleGender = NULL, uploadfilename = "bulkupload.txt",
-  messageLevel = 0)
+CNMS.MakeBulkUpload(
+  xlsxFile,
+  BedsCode = "010100860907",
+  singleGender = NULL,
+  uploadfilename = "bulkupload.txt",
+  messageLevel = 0
+)
 }
 \arguments{
 \item{xlsxFile}{An xlsx file, Workbook object, or URL to an xlsx file}

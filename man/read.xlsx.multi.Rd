@@ -4,8 +4,15 @@
 \alias{read.xlsx.multi}
 \title{Read Multiple Excel workbooks}
 \usage{
-read.xlsx.multi(folder, sheet = 1, pattern = NULL, dupVar = NULL,
-  orderBy = NULL, decreasing = T, messageLevel = 0)
+read.xlsx.multi(
+  folder,
+  sheet = 1,
+  pattern = NULL,
+  dupVar = NULL,
+  orderBy = NULL,
+  decreasing = T,
+  messageLevel = 0
+)
 }
 \arguments{
 \item{folder}{character of length 1 with the address of a folder}

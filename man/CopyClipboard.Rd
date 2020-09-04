@@ -4,8 +4,7 @@
 \alias{CopyClipboard}
 \title{Copy Clipboard}
 \usage{
-CopyClipboard(allowEscapes = F, strip.white = F, sep = ">",
-  single = T)
+CopyClipboard(allowEscapes = F, strip.white = F, sep = ">", single = T)
 }
 \arguments{
 \item{allowEscapes}{Logical, should escape characters be interpreted?}

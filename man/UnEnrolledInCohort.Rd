@@ -4,9 +4,13 @@
 \alias{UnEnrolledInCohort}
 \title{Unenrolled Students In The Cohort}
 \usage{
-UnEnrolledInCohort(WB, cohorts, returnvars = c("Local.ID.(optional)",
-  "Last.Name", "First.Name", "Cohort.Year.(year.1st.entered.9th)",
-  "Date.left.GTH", "Discharge.Reason"), messageLevel = 0)
+UnEnrolledInCohort(
+  WB,
+  cohorts,
+  returnvars = c("Local.ID.(optional)", "Last.Name", "First.Name",
+    "Cohort.Year.(year.1st.entered.9th)", "Date.left.GTH", "Discharge.Reason"),
+  messageLevel = 0
+)
 }
 \arguments{
 \item{WB}{data.frame of the accountability workbook}

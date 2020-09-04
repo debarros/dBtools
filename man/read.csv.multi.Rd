@@ -4,10 +4,23 @@
 \alias{read.csv.multi}
 \title{Read Multiple CSV's}
 \usage{
-read.csv.multi(folder, header = TRUE, sep = ",", quote = "\\"",
-  dec = ".", fill = TRUE, trim = TRUE, comment.char = "",
-  stringsAsFactors = F, pattern = NULL, dupVar = NULL,
-  orderBy = NULL, decreasing = T, idcol = NULL, messageLevel = 0)
+read.csv.multi(
+  folder,
+  header = TRUE,
+  sep = ",",
+  quote = "\\"",
+  dec = ".",
+  fill = TRUE,
+  trim = TRUE,
+  comment.char = "",
+  stringsAsFactors = F,
+  pattern = NULL,
+  dupVar = NULL,
+  orderBy = NULL,
+  decreasing = T,
+  idcol = NULL,
+  messageLevel = 0
+)
 }
 \arguments{
 \item{folder}{character of length 1 with the address of a folder}

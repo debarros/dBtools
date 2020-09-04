@@ -4,9 +4,14 @@
 \alias{SearchFiles.select}
 \title{Search Files Select}
 \usage{
-SearchFiles.select(files, includeAll = NA_character_,
-  includeAny = NA_character_, remove = NA_character_,
-  spaceReplaceAny = NA_character_, andReplaceAny = NA_character_)
+SearchFiles.select(
+  files,
+  includeAll = NA_character_,
+  includeAny = NA_character_,
+  remove = NA_character_,
+  spaceReplaceAny = NA_character_,
+  andReplaceAny = NA_character_
+)
 }
 \arguments{
 \item{files}{A character vector with filenames}
