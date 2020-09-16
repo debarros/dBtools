@@ -4,12 +4,14 @@
 \alias{CharCartProd}
 \title{Character Cartesian Product}
 \usage{
-CharCartProd(x, y)
+CharCartProd(x, y, groupBy = 1)
 }
 \arguments{
 \item{x}{A character vector}
 
 \item{y}{A character vector}
+
+\item{groupBy}{either 1 or 2.  Determines which variable gets grouped together in the results.}
 }
 \value{
 A character vector where each element is a concatenation of one element from x and one element from y
@@ -22,4 +24,6 @@ vecOne = letters[1:5]
 vecTwo = LETTERS[6:8]
 CharCartProd(x = vecOne, y = vecTwo)
 CharCartProd(vecTwo, vecOne)
+CharCartProd(vecOne, vecTwo, 2)
+CharCartProd(vecTwo, vecOne, 2)
 }
